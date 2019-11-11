@@ -1,0 +1,24 @@
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  labels:
+    serving.knative.dev/release: "v0.10.0"
+  name: jaeger
+  namespace: istio-system
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    serving.knative.dev/release: "v0.10.0"
+  name: zipkin
+  namespace: istio-system
+spec:
+  ports:
+  - name: http
+    port: 9411
+  selector:
+    app: jaeger
+
+---

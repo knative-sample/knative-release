@@ -1965,14 +1965,14 @@ spec:
         - name: METRICS_DOMAIN
           value: knative.dev/eventing
         - name: BROKER_INGRESS_IMAGE
-          value: gcr.io/knative-releases/knative.dev/eventing/cmd/broker/ingress@sha256:09e0be131cf80431fb2fdaf06a865cc1f49d6aecf527878ced25af4c70cb4d3c
+          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-broker-ingress:09e0be131cf80431fb2fdaf06a865cc1f49d6aecf527878ced25af4c70cb4d3c
         - name: BROKER_INGRESS_SERVICE_ACCOUNT
           value: eventing-broker-ingress
         - name: BROKER_FILTER_IMAGE
-          value: gcr.io/knative-releases/knative.dev/eventing/cmd/broker/filter@sha256:94043bca23a08d26ffd6bdf7111464237d22413023c5ba4338b931a5eab242bd
+          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-broker-filter:94043bca23a08d26ffd6bdf7111464237d22413023c5ba4338b931a5eab242bd
         - name: BROKER_FILTER_SERVICE_ACCOUNT
           value: eventing-broker-filter
-        image: gcr.io/knative-releases/knative.dev/eventing/cmd/controller@sha256:82fdc37bd5fc99d756a7a5e21a14fcaff7ad0a1f09ef2c33197bca9af9b329ba
+        image: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-controller:82fdc37bd5fc99d756a7a5e21a14fcaff7ad0a1f09ef2c33197bca9af9b329ba
         name: eventing-controller
         ports:
         - containerPort: 9090
@@ -2021,10 +2021,10 @@ spec:
         - name: METRICS_DOMAIN
           value: knative.dev/sources
         - name: CRONJOB_RA_IMAGE
-          value: gcr.io/knative-releases/knative.dev/eventing/cmd/cronjob_receive_adapter@sha256:bdf30b32d57e1536fca5e436ce9c074827afd5f6f5eceed4cc0a8ca97096cefa
+          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-cronjob_receive_adapter:bdf30b32d57e1536fca5e436ce9c074827afd5f6f5eceed4cc0a8ca97096cefa
         - name: APISERVER_RA_IMAGE
-          value: gcr.io/knative-releases/knative.dev/eventing/cmd/apiserver_receive_adapter@sha256:67300996636df61f7271cfaed335b57daaea9496acebb6f8db68b9f81931b2db
-        image: gcr.io/knative-releases/knative.dev/eventing/cmd/sources_controller@sha256:27f0b025ea16907db2b52cb220894b91cac627c6fbff914fce90ae4d987f1b0b
+          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-apiserver_receive_adapter:67300996636df61f7271cfaed335b57daaea9496acebb6f8db68b9f81931b2db
+        image: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-sources_controller:27f0b025ea16907db2b52cb220894b91cac627c6fbff914fce90ae4d987f1b0b
         name: controller
         ports:
         - containerPort: 9090
@@ -2095,7 +2095,7 @@ spec:
           value: eventing-webhook
         - name: REG_DELAY_TIME
           value: "10"
-        image: gcr.io/knative-releases/knative.dev/eventing/cmd/webhook@sha256:fb8c72dc3c2897193a04459e2e05fc56f47228fe37981d7b653e87f1725a54bb
+        image: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-webhook:fb8c72dc3c2897193a04459e2e05fc56f47228fe37981d7b653e87f1725a54bb
         name: eventing-webhook
         terminationMessagePolicy: FallbackToLogsOnError
       serviceAccountName: eventing-webhook
