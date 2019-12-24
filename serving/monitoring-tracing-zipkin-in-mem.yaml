@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    serving.knative.dev/release: "v0.10.0"
+  name: zipkin
+  namespace: istio-system
+spec:
+  ports:
+  - name: http
+    port: 9411
+  selector:
+    app: zipkin
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    serving.knative.dev/release: "v0.10.0"
+  name: zipkin
+  namespace: istio-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zipkin
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
+      labels:
+        app: zipkin
+        serving.knative.dev/release: "v0.10.0"
+    spec:
+      containers:
+      - env:
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        image: registry.cn-hangzhou.aliyuncs.com/knative-release/zipkin:2.13.0
+        imagePullPolicy: IfNotPresent
+        name: zipkin
+        ports:
+        - containerPort: 9411
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            memory: 256Mi
+
+---
