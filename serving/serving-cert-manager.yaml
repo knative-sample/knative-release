@@ -1,12 +1,14 @@
 
 ---
+
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
     networking.knative.dev/certificate-provider: cert-manager
     serving.knative.dev/controller: "true"
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: knative-serving-certmanager
 rules:
 - apiGroups:
@@ -21,6 +23,8 @@ rules:
   - delete
   - patch
   - watch
+
+---
 
 ---
 
@@ -126,7 +130,7 @@ kind: ConfigMap
 metadata:
   labels:
     networking.knative.dev/certificate-provider: cert-manager
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: config-certmanager
   namespace: knative-serving
 
@@ -158,7 +162,7 @@ kind: Deployment
 metadata:
   labels:
     networking.knative.dev/certificate-provider: cert-manager
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: networking-certmanager
   namespace: knative-serving
 spec:
@@ -172,7 +176,7 @@ spec:
         sidecar.istio.io/inject: "false"
       labels:
         app: networking-certmanager
-        serving.knative.dev/release: "v0.10.0"
+        serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
       - env:
@@ -186,7 +190,7 @@ spec:
           value: config-observability
         - name: METRICS_DOMAIN
           value: knative.dev/serving
-        image: registry.cn-hangzhou.aliyuncs.com/knative-release/serving-cmd-networking-certmanager:1689ce4fa7f920859eca56ab891490be5ff4462b1e220c6fd7bf8405170d2979
+        image: registry.cn-hangzhou.aliyuncs.com/knative-release/serving-cmd-networking-certmanager:a4c37a6b13ef60f24dd25a77eba9b41195491fe1f76fdb5b05273a94ed7d7e66
         name: networking-certmanager
         ports:
         - containerPort: 9090
