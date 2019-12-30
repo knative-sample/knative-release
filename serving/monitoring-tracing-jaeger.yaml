@@ -2,7 +2,7 @@ apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: jaeger
   namespace: istio-system
 spec:
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: zipkin
   namespace: istio-system
 spec:

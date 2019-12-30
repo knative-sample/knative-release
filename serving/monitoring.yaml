@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: knative-monitoring
 
 ---
@@ -289,7 +289,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: fluentd-ds-config
   namespace: knative-monitoring
 
@@ -299,7 +299,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: fluentd-ds
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: fluentd-ds
   namespace: knative-monitoring
 ---
@@ -308,7 +308,7 @@ kind: ClusterRole
 metadata:
   labels:
     app: fluentd-ds
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: fluentd-ds
 rules:
 - apiGroups:
@@ -326,7 +326,7 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     app: fluentd-ds
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: fluentd-ds
 roleRef:
   apiGroup: ""
@@ -343,7 +343,7 @@ kind: Service
 metadata:
   labels:
     app: fluentd-ds
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: fluentd-ds
   namespace: knative-monitoring
 spec:
@@ -364,7 +364,7 @@ kind: DaemonSet
 metadata:
   labels:
     app: fluentd-ds
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
     version: v2.0.4
   name: fluentd-ds
   namespace: knative-monitoring
@@ -379,7 +379,7 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ""
       labels:
         app: fluentd-ds
-        serving.knative.dev/release: "v0.10.0"
+        serving.knative.dev/release: "v0.11.0"
         version: v2.0.4
     spec:
       containers:
@@ -6951,12 +6951,15 @@ subjects:
   name: node-exporter
   namespace: knative-monitoring
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: node-exporter
   namespace: knative-monitoring
 spec:
+  selector:
+    matchLabels:
+      app: node-exporter
   template:
     metadata:
       labels:
@@ -7050,7 +7053,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-custom-config
   namespace: knative-monitoring
 
@@ -7556,7 +7559,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-dashboard-definition-knative-efficiency
   namespace: knative-monitoring
 
@@ -8168,7 +8171,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-dashboard-definition-knative-reconciler
   namespace: knative-monitoring
 
@@ -9339,7 +9342,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: scaling-config
   namespace: knative-monitoring
 
@@ -10523,7 +10526,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-dashboard-definition-knative
   namespace: knative-monitoring
 
@@ -10542,7 +10545,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-datasources
   namespace: knative-monitoring
 ---
@@ -10630,7 +10633,7 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana-dashboards
   namespace: knative-monitoring
 ---
@@ -10639,7 +10642,7 @@ kind: Service
 metadata:
   labels:
     app: grafana
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana
   namespace: knative-monitoring
 spec:
@@ -10655,7 +10658,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: grafana
   namespace: knative-monitoring
 spec:
@@ -10667,7 +10670,7 @@ spec:
     metadata:
       labels:
         app: grafana
-        serving.knative.dev/release: "v0.10.0"
+        serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
       - env:
@@ -11176,7 +11179,7 @@ kind: ConfigMap
 metadata:
   labels:
     name: prometheus-scrape-config
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-scrape-config
   namespace: knative-monitoring
 
@@ -11186,7 +11189,7 @@ kind: Service
 metadata:
   labels:
     app: kube-controller-manager
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: kube-controller-manager
   namespace: knative-monitoring
 spec:
@@ -11206,7 +11209,7 @@ kind: Service
 metadata:
   labels:
     app: prometheus
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system-discovery
   namespace: knative-monitoring
 spec:
@@ -11225,7 +11228,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: knative-monitoring
 ---
@@ -11233,7 +11236,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: default
 rules:
@@ -11259,7 +11262,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: knative-monitoring
 rules:
@@ -11285,7 +11288,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: kube-system
 rules:
@@ -11304,7 +11307,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: istio-system
 rules:
@@ -11331,7 +11334,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: knative-monitoring
 rules:
@@ -11363,7 +11366,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: default
 roleRef:
@@ -11379,7 +11382,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: knative-monitoring
 roleRef:
@@ -11395,7 +11398,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: kube-system
 roleRef:
@@ -11411,7 +11414,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: istio-system
 roleRef:
@@ -11427,7 +11430,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -11442,7 +11445,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system-np
   namespace: knative-monitoring
 spec:
@@ -11457,7 +11460,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: prometheus-system
   namespace: knative-monitoring
 spec:
@@ -11471,7 +11474,7 @@ spec:
     metadata:
       labels:
         app: prometheus
-        serving.knative.dev/release: "v0.10.0"
+        serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
       - args:
@@ -11531,7 +11534,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: zipkin
   namespace: istio-system
 spec:
@@ -11545,7 +11548,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.10.0"
+    serving.knative.dev/release: "v0.11.0"
   name: zipkin
   namespace: istio-system
 spec:
@@ -11559,7 +11562,7 @@ spec:
         sidecar.istio.io/inject: "false"
       labels:
         app: zipkin
-        serving.knative.dev/release: "v0.10.0"
+        serving.knative.dev/release: "v0.11.0"
     spec:
       containers:
       - env:
