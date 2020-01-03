@@ -1972,7 +1972,7 @@ spec:
         - name: BROKER_INGRESS_SERVICE_ACCOUNT
           value: eventing-broker-ingress
         - name: BROKER_FILTER_IMAGE
-          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-broker-ingress:09e0be131cf80431fb2fdaf06a865cc1f49d6aecf527878ced25af4c70cb4d3c
+          value: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-broker-filter:94043bca23a08d26ffd6bdf7111464237d22413023c5ba4338b931a5eab242bd
         - name: BROKER_FILTER_SERVICE_ACCOUNT
           value: eventing-broker-filter
         image: registry.cn-hangzhou.aliyuncs.com/knative-release/eventing-cmd-controller:82fdc37bd5fc99d756a7a5e21a14fcaff7ad0a1f09ef2c33197bca9af9b329ba
